@@ -38,7 +38,7 @@ public class RegisterAPIResource {
 			
 			if(result.equalsIgnoreCase("success")) {
 				response.put("statusCode", "201");
-				response.put("statusMsg", "Registration Successful");
+				response.put("statusMsg", "Registration is Successful");
 				
 			}else {
 				
