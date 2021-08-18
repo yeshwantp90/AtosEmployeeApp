@@ -32,7 +32,7 @@ public class LoginAPIResource {
 		HashMap<String, String> response = new HashMap<String, String>();
 		
 		if(action) {
-			response.put("statusCode", "201");
+			response.put("statusCode", "200");
 			response.put("statusMsg", "Login Successful");
 			
 		}else {
