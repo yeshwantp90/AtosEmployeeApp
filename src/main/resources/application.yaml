@@ -1,0 +1,83 @@
+# Put main configuration in this file
+# See http://seedstack.org/docs/seed/configuration for more information
+
+logging:
+  level: INFO
+
+application:
+  # Unique identifier of the application accross your organization
+  id: my-web-project
+  # Make sure all your application base packages are listed below
+  basePackages: [ org.generated.project ]
+
+security:
+  # The security configuration realm uses the 'users' section below (replace it with a more useful realm later)
+  # See http://seedstack.org/docs/seed/manual/security/#realms for more information
+  realms: ConfigurationRealm
+  users:
+    # A default 'demo' user is defined with password 'demo'
+    demo: demo
+  web:
+    # The 'urls' section below in used to secure HTTP requests
+    # See http://seedstack.org/docs/seed/manual/security/#http-access-control for more information
+    urls:
+    #   -
+    #     pattern: /api/**
+    #     filters: authcBasic
+
+
+jdbc:
+  datasources:
+    myDatasource:
+      provider: org.seedstack.jdbc.internal.datasource.HikariDataSourceProvider
+      url: jdbc:postgresql://localhost:5432/postgres
+      user: postgres
+      password: password
+      
+      
+jpa:
+  units:
+    myUnit:
+      datasource: myDatasource
+      properties:
+        hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
+        hibernate.hbm2ddl.auto: create
+        hibernate.show_sql: true
+        
+#        
+#classes:
+#  org:
+#    generated:
+#      project:
+#        domain:
+#          model:
+#            jpaUnit: myUnit
+
+
+
+classes:
+  org:
+    generated:
+      project:
+        domain:
+          model:
+            jpaUnit: myUnit
+            
+            
+swagger:
+  # The title of the published API.
+  title: PSA Employee Tracker
+ 
+  # The version of the published API.
+  version: V1
+ 
+  contactUrl: hello
+ 
+  # If true, the Swagger output is pretty printed (false by default).
+  prettyPrint: true   
+ 
+web:
+    cors: true              
+            
+            
+
