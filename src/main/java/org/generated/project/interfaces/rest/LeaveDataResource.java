@@ -27,7 +27,6 @@ import com.google.inject.servlet.RequestParameters;
 import java.util.stream.Collectors;
 
 @Path("psa")
-
 public class LeaveDataResource {
 
 	

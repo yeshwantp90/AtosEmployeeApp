@@ -15,7 +15,7 @@ import org.seedstack.seed.Bind;
 
 @Bind
 
-public class PersonJPARepository extends BaseJpaRepository<Employee, EmployeeId>  {
+public class EmployeeJPARepository extends BaseJpaRepository<Employee, EmployeeId>  {
 
   
 	  public ArrayList<Employee> getEmployee(LoginData empObj) {

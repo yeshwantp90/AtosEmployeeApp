@@ -24,6 +24,7 @@ public class RegisterAPIResource {
 
 	@Inject
 	private EmployeeService service;
+	
 
 
 	@Path("registerEmployee")
@@ -31,7 +32,6 @@ public class RegisterAPIResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public HashMap<String, String> register(Employee emp) {
-	
 		 String result = service.employeeService(emp);
 		 
 		 HashMap<String, String> response = new HashMap<String, String>();
@@ -51,7 +51,6 @@ public class RegisterAPIResource {
 				}
 				
 			}
-			
 			return response;
 
 	}

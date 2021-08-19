@@ -21,7 +21,7 @@ import org.seedstack.seed.transaction.Transactional;
 public class EmployeeServiceImpl implements EmployeeService {
 
 	@Inject
-	private PersonJPARepository personRepository;
+	private EmployeeJPARepository personRepository;
 	
 	@Inject
 	@Jpa
