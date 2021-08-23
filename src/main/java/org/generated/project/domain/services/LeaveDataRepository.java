@@ -13,6 +13,8 @@ import org.generated.project.domain.model.LeaveDataId;
 import org.seedstack.jpa.BaseJpaRepository;
 import org.seedstack.seed.Bind;
 
+import com.sun.istack.logging.Logger;
+
 @Bind
 public class LeaveDataRepository extends BaseJpaRepository<LeaveData,LeaveDataId>{
 
@@ -20,7 +22,11 @@ public class LeaveDataRepository extends BaseJpaRepository<LeaveData,LeaveDataId
 	@Inject
 	EntityManager entityManager;
 	
+	private static final Logger logger = Logger.getLogger(LeaveDataRepository.class);  
+	
 	  public String  saveEmployeeLeave(LeaveData leaveObj) {
+		  
+		  logger.info("Inside saveEmployeeLeave"+leaveObj);
 	         EntityManager entityManager = getEntityManager();
 	      	
 	         try {
@@ -28,6 +34,8 @@ public class LeaveDataRepository extends BaseJpaRepository<LeaveData,LeaveDataId
 	 		  entityManager.persist(leaveObj);		
 	 		  return "Success";
 	         }catch(Exception ex) {
+	        	  
+	   		  logger.info("Exception occured in saveEmployeeLeave"+leaveObj);
 	        	 return ex.getMessage();
 	         }
 	 		
@@ -43,7 +51,7 @@ public class LeaveDataRepository extends BaseJpaRepository<LeaveData,LeaveDataId
 					Employee em =new Employee();
 					EmployeeId emObj =new EmployeeId(id.toString());
 					em.setId(emObj);	
-					query.setParameter("employeeId", "100");
+					query.setParameter("employeeId", em);
 					obj = query.getResultList();
 				} catch (Exception ex) {
 					

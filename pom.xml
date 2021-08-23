@@ -143,6 +143,11 @@
             <artifactId>business-core</artifactId>
         </dependency>
         <dependency>
+	      <groupId>ch.qos.logback</groupId>
+	      <artifactId>logback-classic</artifactId>
+	      <version>1.2.3</version>
+        </dependency>
+        <dependency>
             <groupId>org.seedstack.addons.modelmapper</groupId>
             <artifactId>modelmapper</artifactId>
         </dependency>

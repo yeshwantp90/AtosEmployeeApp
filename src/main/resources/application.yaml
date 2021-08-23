@@ -4,6 +4,13 @@
 logging:
   level: INFO
 
+
+  
+  # The pattern for the default console appender
+  pattern: (String)
+  
+     
+
 application:
   # Unique identifier of the application accross your organization
   id: my-web-project
