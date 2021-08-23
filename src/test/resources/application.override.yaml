@@ -3,15 +3,4 @@
 logging:
   level: INFO
 
-jdbc:
-  datasources:
-    main:
-      url: jdbc:h2:mem:myWebProject-test
 
-
-jpa:
-  units:
-    main:
-      properties:
-        hibernate.hbm2ddl.auto: create
-        hibernate.dialect: org.hibernate.dialect.H2Dialect
