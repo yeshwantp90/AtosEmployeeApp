@@ -3,6 +3,8 @@ package org.generated.project.interfaces.rest;
 import java.util.HashMap;
 
 import javax.inject.Inject;
+import javax.validation.Valid;
+import javax.validation.Validator;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -10,7 +12,10 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import org.generated.project.application.LoginData;
+import org.generated.project.application.ValidateParam;
 import org.generated.project.domain.services.EmployeeService;
+
+import com.google.inject.servlet.RequestParameters;
 
 import io.swagger.annotations.Api;
 
@@ -25,11 +30,22 @@ public class LoginAPIResource {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public HashMap<String, String> loginService(LoginData data) {
-		
-		boolean action = login.loginService(data);
+	public HashMap<String, String> loginService(@Valid @RequestParameters LoginData data) {
 		
 		HashMap<String, String> response = new HashMap<String, String>();
+		
+
+		boolean flag =ValidateParam.isNull(data.getUsername());
+		
+		
+		if(flag) {
+		response.put("statusCode", "500");
+		response.put("statusMsg", "Please enter required fields");
+		}else {
+			
+		
+				
+		boolean action = login.loginService(data);
 		
 		if(action) {
 			response.put("statusCode", "201");
@@ -39,6 +55,12 @@ public class LoginAPIResource {
 			response.put("statusCode", "500");
 			response.put("statusMsg", "Login Not Successful");
 		}
+		
+		}
+			
+		 
+			
+		
 		
 		return response;
 	}

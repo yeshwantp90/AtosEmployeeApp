@@ -1,6 +1,12 @@
 package org.generated.project.application;
 
+import javax.validation.constraints.NotEmpty;
+
+import org.seedstack.seed.validation.NotBlank;
+
 public class LoginData {
+	
+	
 	private String username;
 	private String password;
 
@@ -8,6 +14,7 @@ public class LoginData {
 		return username;
 	}
 
+	
 	public void setUsername(String username) {
 		this.username = username;
 	}
