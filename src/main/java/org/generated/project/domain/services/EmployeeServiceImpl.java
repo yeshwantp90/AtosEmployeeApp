@@ -14,7 +14,10 @@ import org.seedstack.business.domain.Repository;
 import org.seedstack.jpa.Jpa;
 import org.seedstack.jpa.JpaUnit;
 import org.seedstack.seed.Bind;
+import org.seedstack.seed.Logging;
 import org.seedstack.seed.transaction.Transactional;
+import org.slf4j.Logger;
+//import com.sun.istack.logging.Logger;
 
 
 @Bind
@@ -27,10 +30,17 @@ public class EmployeeServiceImpl implements EmployeeService {
 	@Jpa
 	private Repository<Employee,EmployeeId> emprepo;
 	
+	@Logging
+    private Logger logger;
+	
 	@Transactional
 	@JpaUnit("myUnit")
 	public String employeeService(Employee emp) {
-		
+	   
+	        logger.info("EmployeeServiceImpl  ::  employeeService() : param : { "+emp.getUsername(),","+emp.getDoj()+","+emp.getEmail()+","+emp.getId()+","+emp.getJobRole()+","+emp.getGender()+","+emp.getPassword()+","+emp.getProjectId()+","+emp.getProjectName()+"}");
+	        
+	    
+	    
 		String status="";
 		try {
 			
@@ -46,7 +56,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 			
 		}
 		catch(Exception e){
-			
+			logger.info("Exception occured in getEmployee"+emp);
 			e.getMessage();
 			status="fail";
 			
@@ -86,6 +96,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 //    	return resolve;
 //    }
     public boolean loginService(LoginData data) {
+    	
+    	logger.info("EmployeeServiceImpl  ::  loginService() :  param: {" +data.getUsername()+","+data.getPassword()+"}");
+        
     	boolean resolve =false;
        	
         //Optional<Employee> login = getservice(new EmployeeId());
@@ -104,6 +117,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     @JpaUnit("myUnit")
 	@Override
 	public Optional<Employee> getservice(EmployeeId id) {
+    	logger.info("EmployeeServiceImpl :: getservice():");
 		Optional<Employee> obj = loginRepository.get(id);
 		return obj;
 	}
@@ -112,7 +126,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Transactional
 	@JpaUnit("myUnit")
 	public ArrayList<Employee> verifyEmployeeDetails(LoginData empObj) {
-
+    	logger.info("EmployeeServiceImpl :: verifyEmployeeDetails():");
     	ArrayList<Employee> login = personRepository.getEmployee(empObj);
 
 		return login;

@@ -12,13 +12,16 @@ import org.generated.project.domain.model.Employee;
 import org.generated.project.domain.model.EmployeeId;
 import org.seedstack.jpa.BaseJpaRepository;
 import org.seedstack.seed.Bind;
+import com.sun.istack.logging.Logger;
 
 @Bind
 
 public class EmployeeJPARepository extends BaseJpaRepository<Employee, EmployeeId>  {
 
+	private static final Logger logger =  Logger.getLogger(EmployeeJPARepository.class);
   
 	  public ArrayList<Employee> getEmployee(LoginData empObj) {
+		  logger.info("Inside getEmployee"+empObj);
 	         EntityManager entityManager = getEntityManager();
 	      	 			 			 		
 	         
@@ -32,6 +35,7 @@ public class EmployeeJPARepository extends BaseJpaRepository<Employee, EmployeeI
 					
  
 				} catch (Exception ex) {
+					logger.info("Exception occured in getEmployee"+empObj);
 					obj = null;
 
 				}

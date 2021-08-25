@@ -45,7 +45,7 @@ public class LeaveDataServiceImpl implements LeaveDataService {
 	@Transactional
 	@JpaUnit("myUnit")
 	public List<Object> retriveLeaveData(Long employeeId) {
-	
+		logger.info("LeaveDataServiceImpl :: retriveLeaveData():");
 		List<Object> leaveDataObj = leaveDataRepository.getLeaveData(employeeId);
 
 		return leaveDataObj;
