@@ -36,11 +36,16 @@ public class LoginAPIResource {
 		
 
 		boolean flag =ValidateParam.isNull(data.getUsername());
-		
+		boolean flag1 =ValidateParam.isNull(data.getPassword());
 		
 		if(flag) {
 		response.put("statusCode", "500");
-		response.put("statusMsg", "Please enter required fields");
+		response.put("statusMsg", "Please enter required Username");
+		}
+		else if(flag1) {
+			response.put("statusCode", "500");
+			response.put("statusMsg", "Please enter required Password");
+			
 		}else {
 			
 		
@@ -53,15 +58,9 @@ public class LoginAPIResource {
 			
 		}else {
 			response.put("statusCode", "500");
-			response.put("statusMsg", "Login Not Successful");
+			response.put("statusMsg", "Username or Password is incorrect");
 		}
-		
 		}
-			
-		 
-			
-		
-		
 		return response;
 	}
 
