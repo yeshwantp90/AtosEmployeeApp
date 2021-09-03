@@ -33,20 +33,27 @@ public class AttendanceDataServiceImpl implements AttendanceDataService {
 
 	@Transactional
 	@JpaUnit("myUnit")
-	public String applyLeave(AttendanceData attendanceDataObject) {
+	public String applyAttendance(AttendanceData attendanceDataObject) {
 		
-		logger.info("LeaveDataServiceImpl :: applyLeave()  param { "+attendanceDataObject.getJustification(),", "+attendanceDataObject.getDate());	
+		logger.info("AttendanceDataServiceImpl :: applyAttendance()  param { "+attendanceDataObject.getJustification(),", "+attendanceDataObject.getDate());	
 		String str = attendanceDataRepository.saveEmployeeAttendance(attendanceDataObject);
 
-		logger.info("LeaveDataServiceImpl :: applyLeave()  After saving data : return object  "+str);		 
+		logger.info("AttendanceDataServiceImpl :: applyAttendance()  After saving data : return object  "+str);		 
         return str;
 	}
 
 
-	@Override
-	public String applyAttendance(AttendanceData attendanceDataObject) {
-		// TODO Auto-generated method stub
-		return null;
+	@Transactional
+	@JpaUnit("myUnit")
+	public List<Object> applyAttendance1(Long employeeId) {
+		
+		List<Object> attendanceDataObj = attendanceDataRepository.getAttendanceData(employeeId);
+
+		return attendanceDataObj;
+
 	}
+
+
+	
 	
 }

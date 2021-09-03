@@ -39,7 +39,7 @@ public class AttendanceDataResourse {
 	  @Consumes(MediaType.APPLICATION_JSON)
 	  @Produces(MediaType.APPLICATION_JSON)
 	  @Path("applyAttendance") 
-	  public HashMap applyLeave(@RequestParameters AttendanceData	  attendanceDataObject) {
+	  public HashMap applyAttendance(@RequestParameters AttendanceData	  attendanceDataObject) {
 	  
 	  String str = attendanceDataService.applyAttendance(attendanceDataObject);
 	  

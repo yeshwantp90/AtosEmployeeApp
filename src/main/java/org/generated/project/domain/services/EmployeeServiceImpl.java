@@ -132,6 +132,32 @@ public class EmployeeServiceImpl implements EmployeeService {
 		return login;
 	}
     
+    @Transactional
+	@JpaUnit("myUnit")
+	public String applyAdditional(Employee employeeObject) {
+		
+		logger.info("AdditionalDataServiceImpl :: applyAdditional()  param { "+employeeObject.getDob(),", "+employeeObject.getAddress()+" ,"+employeeObject.getExperience()+","+employeeObject.getWorkLocation()+","+employeeObject.getEmergencyContact()+","+employeeObject.getSkillsAccquired());	
+		
+		try {
+			
+			Optional<Employee> obj = loginRepository.get(employeeObject.getId());
+			
+			Employee emp =obj.get();
+			emp.setAddress(employeeObject.getAddress());
+			emp.setEmergencyContact(employeeObject.getEmergencyContact());
+			emp.setExperience(employeeObject.getExperience());
+			emp.setDob(employeeObject.getDob());
+			emp.setWorkLocation(employeeObject.getWorkLocation());
+			emp.setSkillsAccquired(employeeObject.getSkillsAccquired());
+			emprepo.update(emp);
+			logger.info("AdditionalDataServiceImpl :: applyAdditional()  After saving data : return object  ");		
+			return "success";
+		}catch(Exception ex) {
+			
+			return "failure";
+		}
+}
+    
     
     
 }

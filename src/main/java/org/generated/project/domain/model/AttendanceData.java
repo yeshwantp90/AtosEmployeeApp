@@ -29,8 +29,8 @@ public class AttendanceData extends BaseAggregateRoot<AttendanceDataId> {
 	@JoinColumn(name = "employeeId")
 	private Employee employee;
 
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy", locale = "local")
-	private Date date;
+	//@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy", locale = "local")
+	private String date;
 
 	private String justification;
 
@@ -44,7 +44,7 @@ public class AttendanceData extends BaseAggregateRoot<AttendanceDataId> {
 
 	}
 
-	public AttendanceData(Employee employee, int AttendanceDataId, Date date, String justification) {
+	public AttendanceData(Employee employee, int AttendanceDataId, String date, String justification) {
 
 		this.employee = employee;
 		this.AttendanceDataId = AttendanceDataId;
@@ -59,12 +59,12 @@ public class AttendanceData extends BaseAggregateRoot<AttendanceDataId> {
 				 ", justification= " + justification;
 	}
 
-	public Date getDate() {
+	public String getDate() {
 
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(String date) {
 
 		this.date = date;
 	}
