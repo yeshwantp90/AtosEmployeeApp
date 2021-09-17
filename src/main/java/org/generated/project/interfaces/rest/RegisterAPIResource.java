@@ -42,20 +42,22 @@ public class RegisterAPIResource {
 		 HashMap<String, String> response = new HashMap<String, String>();
 		 
 		 //EmployeeId id = new EmployeeId(emp.getId);
-		
-		 boolean flag =ValidateParam.isNull(emp.getUsername());
+		 
+		 boolean flag =ValidateParam.isNull(emp.getName());
 		 boolean flag1 =ValidateParam.isNull(emp.getEmail());
 		 boolean flag2 =ValidateParam.isNull(emp.getPassword());
 		 boolean flag3 =ValidateParam.isNull(emp.getProjectName());
-		 boolean flag4 =ValidateParam.isNull(emp.getProjectId());
-		 boolean flag5 =ValidateParam.isNull(emp.getJobRole());
-		 boolean flag6 =ValidateParam.isNull(emp.getGender());
+		 boolean flag4 =ValidateParam.isNull(emp.getDasid());
+		 boolean flag5 =ValidateParam.isNull(emp.getGcmLevel());
+		 boolean flag6 =ValidateParam.isNull(emp.getJobRole());
+		 boolean flag7 =ValidateParam.isNull(emp.getMobile());
+		 boolean flag8 =ValidateParam.isNull(emp.getRm());
 		 //boolean flag7 =ValidateParam.isNull(emp.getId());
 		 //boolean flag8 =ValidateParam.isNull(emp.getDoj());
 		 
 		    if(flag)  {
 			response.put("statusCode", "500");
-			response.put("statusMsg", "Please enter required username");
+			response.put("statusMsg", "Please enter required name");
 			}
 		    else if(flag1)  {
 				response.put("statusCode", "500");
@@ -71,16 +73,25 @@ public class RegisterAPIResource {
 				}
 		    else if(flag4)  {
 				response.put("statusCode", "500");
-				response.put("statusMsg", "Please enter required projectid");
+				response.put("statusMsg", "Please enter required Dasid");
 				}
 		    else if(flag5)  {
 				response.put("statusCode", "500");
-				response.put("statusMsg", "Please enter required jobrole");
+				response.put("statusMsg", "Please enter required GcmLevel");
 				}
+		    
 		    else if(flag6)  {
 				response.put("statusCode", "500");
-				response.put("statusMsg", "Please enter required gender");
-			}
+				response.put("statusMsg", "Please enter required jobrole");
+				}
+		    else if(flag7)  {
+				response.put("statusCode", "500");
+				response.put("statusMsg", "Please enter required Mobile");
+				}
+		    else if(flag8)  {
+				response.put("statusCode", "500");
+				response.put("statusMsg", "Please enter required Rm");
+				}
 //		    else if(flag7)  {
 //				response.put("statusCode", "500");
 //				response.put("statusMsg", "Please enter required id");
